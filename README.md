@@ -21,7 +21,7 @@ You will need Gradle installed on your device.
 # A text.json file is included to facilitate the feeding of new JSON for testing
 
 The API should take new tracks
-![Alt text](epicodus_api/src/resources/public/images/newTrack.png)
+![Alt text](https://user-images.githubusercontent.com/28036416/29736152-a8c4e8e2-89b3-11e7-846a-b4bd1cd7e653.png)
 
 The API should return all tracks by location
 ![Alt text](images/allTrackByLocation.png)
