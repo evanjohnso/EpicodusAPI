@@ -16,6 +16,8 @@ public interface StudentDao {
     List<Student> getAll();
     Student findById(int id);
 //    int completion();
+    int averageAge();
+    String genderDistribution();
 
     //Update
     void dropped(int id);

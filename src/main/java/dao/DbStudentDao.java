@@ -48,6 +48,20 @@ public class DbStudentDao implements StudentDao {
     }
 
     @Override
+    public int averageAge() {
+        try(Connection con = path.open()) {
+            int average = 0;
+            List<Integer> ages = con.createQuery("SELECT age FROM students")
+                    .executeAndFetch(Integer.class);
+            for (Integer age: ages) {
+                average += age;
+            }
+            return average / ages.size();
+
+        }
+    }
+
+    @Override
     public void dropped(int id) {
         try(Connection con = path.open()) {
             con.createQuery("UPDATE students SET enrolled = (false) WHERE id = :id")
@@ -65,6 +79,31 @@ public class DbStudentDao implements StudentDao {
         }
     }
 
+    @Override
+    public String genderDistribution() {
+        try(Connection con = path.open()) {
+            List<String> genders = con.createQuery("SELECT gender FROM students")
+                    .executeAndFetch(String.class);
+            int female, male, other;
+            female = male = other = 0;
+            for (String gender: genders) {
+                switch (gender) {
+                    case "female":
+                        female ++;
+                        break;
+                    case "male":
+                        male ++;
+                        break;
+                    case "other":
+                        other ++;
+                        break;
+                }
+            }
+            return String.format("Current student distribution at Epicodus is %d female, %d male, %d other", female, male, other);
+
+        }
+    }
+
 //    @Override
 //    public int completion() {
 //        try(Connection con = path.open()) {
@@ -76,9 +115,7 @@ public class DbStudentDao implements StudentDao {
 //                    .addParameter("status", true)
 //                    .executeAndFetch(Student.class)
 //                    .size();
-//            float answer =   progress / total;
-//            double what = 1 / 2;
-//            return 1;
+//            return (progress /total) * 100;
 //        }
 //    }
 

@@ -73,6 +73,28 @@ public class DbStudentDaoTest {
         assertEquals(Arrays.asList(test), studentDao.getAll() );
     }
 
+    @Test
+    public void averageAge() throws Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(test);
+        studentDao.add(second);
+        studentDao.add(new Student("male", 31, false));
+        assertEquals(28, studentDao.averageAge());
+    }
+
+    @Test
+    public void genderDistribution() throws Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(test);
+        studentDao.add(second);
+        studentDao.add(new Student("other", 31, false));
+        studentDao.add(new Student("other", 31, false));
+        studentDao.add(new Student("male", 31, false));
+        assertEquals("Current student distribution at Epicodus is 1 female, 2 male, 2 other",studentDao.genderDistribution());
+    }
+
 
 //    @Test
 //    public void completion_returnsCorrectly() throws Exception {
