@@ -1,0 +1,37 @@
+{
+	"location": "Seattle"
+}
+
+{
+  "location": "Portland"
+}
+
+{
+  "focus": "Java",
+  "description": "Java is arguably the most popular programming language today. It's used for everything from web applications to backend services to mobile applications to embedded systems. Students who learn Java programming will be able to create dynamic web applications, and be able continue into our Android track.",
+  "cost": "6900",
+  "duration": "27 weeks",
+  "commitment": "45 hours per week"
+}
+
+{
+  "focus": "Ruby",
+  "description": "Ruby is a programming language focused on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write. The Ruby programming language is most commonly used with the Ruby on Rails framework.",
+  "cost": "6900",
+  "duration": "27 weeks",
+  "commitment": "45 hours per week"
+}
+{
+  "focus": "CSS",
+  "description": "CSS is the language for describing the presentation of Web pages, including colors, layout, fonts, and other stylistic choices. It allows one to adapt the presentation to different types of devices, such as large screens, small screens, and printers. HTML — used for building the structure of the page — and CSS — used for the visual layout — are the two basic languages involved in the building of web pages and web applications.",
+  "cost": "6900",
+  "duration": "27 weeks",
+  "commitment": "45 hours per week"
+}
+
+{
+  "trackId": "1",
+  "gender": "male",
+  "age": "25",
+  "enrolled": "true"
+}

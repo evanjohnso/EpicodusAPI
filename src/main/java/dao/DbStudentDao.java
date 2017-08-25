@@ -3,6 +3,7 @@ package dao;
 
 import dataModels.Graduate;
 import dataModels.Student;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -125,7 +126,7 @@ public class DbStudentDao implements StudentDao {
                     .addParameter("status", true)
                     .executeAndFetch(Student.class)
                     .size();
-            return (progress / total) * 100;
+            return (int) ((progress / total) * 100 );
         }
     }
 

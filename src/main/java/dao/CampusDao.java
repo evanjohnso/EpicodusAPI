@@ -11,6 +11,7 @@ public interface CampusDao {
 
     //Read
     Campus findById(int id);
+    List<Campus> getAll();
 
     //Delete
     void schoolClosed(Campus school);

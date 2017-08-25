@@ -37,6 +37,13 @@ public class DbCampusDao implements CampusDao {
                     .executeAndFetchFirst(Campus.class);
         }
     }
+    @Override
+    public List<Campus> getAll() {
+        try(Connection con = path.open()) {
+            return con.createQuery("SELECT * FROM campuses")
+                    .executeAndFetch(Campus.class);
+        }
+    }
 
     @Override
     public void schoolClosed(Campus school) {
