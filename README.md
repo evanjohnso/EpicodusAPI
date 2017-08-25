@@ -18,7 +18,7 @@ You will need Gradle installed on your device.
 
 ## Specifications
 
-# A text.json file is included to facilitate the feeding of new JSON for testing
+* A text.json file is included to facilitate the feeding of new JSON for testing
 
 ***
 # The API should take new tracks:
