@@ -21,4 +21,23 @@ public class Campus {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    //Unique Equality
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Campus)) return false;
+
+        Campus campus = (Campus) o;
+
+        if (id != campus.id) return false;
+        return location.equals(campus.location);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + location.hashCode();
+        return result;
+    }
 }

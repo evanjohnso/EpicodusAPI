@@ -2,6 +2,7 @@ package dataModels;
 
 public class Student {
     private int id;
+    private int trackId;
     private String gender;
     private int age;
     private boolean enrolled;
@@ -10,7 +11,8 @@ public class Student {
     public Student() {
     }
 
-    public Student(String gender, int age, boolean enrolled) {
+    public Student(int trackId, String gender, int age, boolean enrolled) {
+        this.trackId = trackId;
         this.gender = gender;
         this.age = age;
         this.enrolled = enrolled;
@@ -22,6 +24,12 @@ public class Student {
     }
     public void setId(int id) {
         this.id = id;
+    }
+    public int getTrackId() {
+        return trackId;
+    }
+    public void setTrackId(int trackId) {
+        this.trackId = trackId;
     }
     public String getGender() {
         return gender;

@@ -79,7 +79,7 @@ public class DbStudentDaoTest {
         Student second = another();
         studentDao.add(test);
         studentDao.add(second);
-        studentDao.add(new Student("male", 31, false));
+        studentDao.add(new Student(1, "male", 31, false));
         assertEquals(28, studentDao.averageAge());
     }
 
@@ -89,12 +89,11 @@ public class DbStudentDaoTest {
         Student second = another();
         studentDao.add(test);
         studentDao.add(second);
-        studentDao.add(new Student("other", 31, false));
-        studentDao.add(new Student("other", 31, false));
-        studentDao.add(new Student("male", 31, false));
+        studentDao.add(new Student(1, "other", 31, false));
+        studentDao.add(new Student(2, "other", 31, false));
+        studentDao.add(new Student(2, "male", 31, false));
         assertEquals("Current student distribution at Epicodus is 1 female, 2 male, 2 other",studentDao.genderDistribution());
     }
-
 
     @Test
     public void completion_returnsCorrectly() throws Exception {
@@ -104,16 +103,29 @@ public class DbStudentDaoTest {
         studentDao.add(new Student());
         studentDao.add(test);
         studentDao.add(second);
-        studentDao.add(new Student("male", 18, true));
+        studentDao.add(new Student(1, "male", 18, true));
         assertEquals(60, studentDao.completion(), 0.02);
+    }
+
+    @Test
+    public void getAllStudentsByTrack() throws Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(test);
+        studentDao.add(second);
+        studentDao.add(new Student(1, "other", 31, false));
+        studentDao.add(new Student(2, "other", 31, false));
+        studentDao.add(new Student(2, "male", 31, false));
+        assertEquals(5, studentDao.getAll().size());
+        assertEquals(3, studentDao.getAllStudentsByTrack(second.getTrackId()).size());
     }
 
     //helpers
     public static Student newGal() {
-        return new Student("female", 28, true);
+        return new Student(1, "female", 28, true);
     }
 
     public static Student another() {
-        return new Student("male", 26, true);
+        return new Student(2, "male", 26, true);
     }
 }

@@ -12,8 +12,8 @@ public class Graduate extends Student {
     //overload to make testing easier
     public Graduate() {
     }
-    public Graduate(int studentId, String gender, int age, String jobTitle, int salary, boolean employed) {
-        super(gender, age, false);
+    public Graduate(int trackId, int studentId, String gender, int age, String jobTitle, int salary, boolean employed) {
+        super(trackId, gender, age, false);
         this.studentId = studentId;
         this.salary = salary;
         this.employed = employed;

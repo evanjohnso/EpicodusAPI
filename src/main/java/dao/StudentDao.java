@@ -14,8 +14,9 @@ public interface StudentDao {
 
     //Read
     List<Student> getAll();
+    List<Student> getAllStudentsByTrack(int trackId);
     Student findById(int id);
-    int completion();
+    double completion();
     int averageAge();
     String genderDistribution();
 

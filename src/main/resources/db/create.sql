@@ -2,6 +2,7 @@ SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS students (
     id int PRIMARY KEY auto_increment,
+    trackId int,
     gender VARCHAR,
     age int,
     enrolled BOOLEAN
@@ -23,18 +24,16 @@ CREATE TABLE IF NOT EXISTS campuses (
 );
 
 CREATE TABLE IF NOT EXISTS tracks (
-  id int PRIMARY KEY auto_increment,
+  trackId int PRIMARY KEY auto_increment,
   focus VARCHAR,
   description VARCHAR,
-  location VARCHAR,
   cost int,
-  length VARCHAR,
-  students int,
+  duration VARCHAR,
   commitment VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS campuses_tracks (
   id int PRIMARY KEY auto_increment,
-  campusId int, --foreign KEY
+  location VARCHAR, --foreign KEY
   trackId int   --foreign KEY
 );

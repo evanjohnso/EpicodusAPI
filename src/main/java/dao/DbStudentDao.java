@@ -18,8 +18,8 @@ public class DbStudentDao implements StudentDao {
 
     @Override
     public void add(Student newStudent) {
-        String sql = "INSERT INTO students (gender, age, enrolled) VALUES"
-                + "(:gender, :age, :enrolled)";
+        String sql = "INSERT INTO students (trackId, gender, age, enrolled) VALUES"
+                        + "(:trackId, :gender, :age, :enrolled)";
         try (Connection con = path.open()) {
             int id = (int) con.createQuery(sql)
                     .bind(newStudent)
@@ -38,6 +38,16 @@ public class DbStudentDao implements StudentDao {
                     .executeAndFetch(Student.class);
         }
     }
+
+    @Override
+    public List<Student> getAllStudentsByTrack(int trackId) {
+        try(Connection con = path.open()) {
+            return con.createQuery("SELECT * FROM students WHERE trackId = :trackId")
+                    .addParameter("trackId", trackId)
+                    .executeAndFetch(Student.class);
+        }
+    }
+
     @Override
     public Student findById(int id) {
         try(Connection con = path.open()) {
@@ -104,7 +114,7 @@ public class DbStudentDao implements StudentDao {
         }
     }
 
-//    @Override
+    @Override
     public double completion() {
         try(Connection con = path.open()) {
             Double total = (double) con.createQuery("SELECT * FROM students")
