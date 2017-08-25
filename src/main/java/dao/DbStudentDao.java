@@ -105,18 +105,18 @@ public class DbStudentDao implements StudentDao {
     }
 
 //    @Override
-//    public int completion() {
-//        try(Connection con = path.open()) {
-//            Integer total = con.createQuery("SELECT * FROM students")
-//                    .executeAndFetch(Student.class)
-//                    .size();
-//
-//            Integer progress = con.createQuery("SELECT * FROM students WHERE enrolled = :status")
-//                    .addParameter("status", true)
-//                    .executeAndFetch(Student.class)
-//                    .size();
-//            return (progress /total) * 100;
-//        }
-//    }
+    public double completion() {
+        try(Connection con = path.open()) {
+            Double total = (double) con.createQuery("SELECT * FROM students")
+                    .executeAndFetch(Student.class)
+                    .size();
+
+            Double progress = (double) con.createQuery("SELECT * FROM students WHERE enrolled = :status")
+                    .addParameter("status", true)
+                    .executeAndFetch(Student.class)
+                    .size();
+            return (progress / total) * 100;
+        }
+    }
 
 }

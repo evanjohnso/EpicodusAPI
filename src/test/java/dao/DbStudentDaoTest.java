@@ -96,17 +96,17 @@ public class DbStudentDaoTest {
     }
 
 
-//    @Test
-//    public void completion_returnsCorrectly() throws Exception {
-//        Student test = newGal();
-//        Student second = another();
-//        studentDao.add(new Student());
-//        studentDao.add(new Student());
-//        studentDao.add(test);
-//        studentDao.add(second);
-//        studentDao.add(new Student("male", 18, false));
-////        assertEquals(4, studentDao.completion());
-//    }
+    @Test
+    public void completion_returnsCorrectly() throws Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(new Student());
+        studentDao.add(new Student());
+        studentDao.add(test);
+        studentDao.add(second);
+        studentDao.add(new Student("male", 18, true));
+        assertEquals(60, studentDao.completion(), 0.02);
+    }
 
     //helpers
     public static Student newGal() {
