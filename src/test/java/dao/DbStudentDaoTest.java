@@ -7,6 +7,9 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class DbStudentDaoTest {
@@ -29,11 +32,34 @@ public class DbStudentDaoTest {
     public void add_addNewStudentIdReturnsCorrectly() throws Exception {
         Student test = newGal();
         studentDao.add(test);
-        assertEquals(0, studentDao.findById(test.getId()).getId());
+        assertEquals(1, studentDao.findById(test.getId()).getId());
     }
 
-    //helper
+    @Test
+    public void getAll_addMultipleAndReturn() throws Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(test);
+        studentDao.add(second);
+        Student[] array = {test, second};
+        assertEquals(Arrays.asList(array), studentDao.getAll());
+    }
+
+    @Test
+    public void findById_findByIdReturnsCorrectly() throws Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(test);
+        studentDao.add(second);
+        assertEquals(second, studentDao.findById(second.getId()));
+    }
+
+    //helpers
     public static Student newGal() {
         return new Student("female", 28, false);
+    }
+
+    public static Student another() {
+        return new Student("male", 26, false);
     }
 }
