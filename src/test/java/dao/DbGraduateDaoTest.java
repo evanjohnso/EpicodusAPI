@@ -41,15 +41,15 @@ public class DbGraduateDaoTest {
     public void add_addNewStudentAndGetAllCorrectly() throws Exception {
         Graduate test = newGal();
         graduateDao.add(test); //add graduate before student is in DB so won't delete
-        Student student = new Student("female", 28, false);
+        Student student = new Student("female", 28, true);
         studentDao.add(student);
         assertEquals(1, studentDao.getAll().size());
     }
 
     @Test
     public void add_addNewGraduateRemovesFromStudentDao() throws Exception {
-        Student student = new Student("female", 28, false);
-        Student student2 = new Student("male", 34, false);
+        Student student = new Student("female", 28, true);
+        Student student2 = new Student("male", 34, true);
         studentDao.add(student);
         studentDao.add(student2);
         //student graduates and gets pulled from students table --> to graduate table

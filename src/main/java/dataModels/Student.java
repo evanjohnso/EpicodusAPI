@@ -4,16 +4,16 @@ public class Student {
     private int id;
     private String gender;
     private int age;
-    private boolean graduated;
+    private boolean enrolled;
 
     //Constructor
     public Student() {
     }
 
-    public Student(String gender, int age, boolean graduated) {
+    public Student(String gender, int age, boolean enrolled) {
         this.gender = gender;
         this.age = age;
-        this.graduated = graduated;
+        this.enrolled = enrolled;
     }
 
     //Getters && Setters
@@ -35,11 +35,11 @@ public class Student {
     public void setAge(int age) {
         this.age = age;
     }
-    public boolean isGraduated() {
-        return graduated;
+    public boolean isEnrolled() {
+        return enrolled;
     }
-    public void setGraduated(boolean graduated) {
-        this.graduated = graduated;
+    public void setEnrolled(boolean enrolled) {
+        this.enrolled = enrolled;
     }
 
     //Unique Equality
@@ -51,14 +51,14 @@ public class Student {
         Student student = (Student) o;
 
         if (age != student.age) return false;
-        if (graduated != student.graduated) return false;
+        if (enrolled != student.enrolled) return false;
         return gender.equals(student.gender);
     }
     @Override
     public int hashCode() {
         int result = gender.hashCode();
         result = 31 * result + age;
-        result = 31 * result + (graduated ? 1 : 0);
+        result = 31 * result + (enrolled ? 1 : 0);
         return result;
     }
 }

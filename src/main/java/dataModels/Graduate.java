@@ -13,7 +13,7 @@ public class Graduate extends Student {
     public Graduate() {
     }
     public Graduate(int studentId, String gender, int age, String jobTitle, int salary, boolean employed) {
-        super(gender, age, true);
+        super(gender, age, false);
         this.studentId = studentId;
         this.salary = salary;
         this.employed = employed;

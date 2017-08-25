@@ -53,13 +53,45 @@ public class DbStudentDaoTest {
         studentDao.add(second);
         assertEquals(second, studentDao.findById(second.getId()));
     }
+    @Test
+    public void dropped() throws  Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(test);
+        studentDao.add(second);
+        studentDao.dropped(second.getId());
+        assertEquals(false, studentDao.findById(second.getId()).isEnrolled());
+    }
+
+    @Test
+    public void graduated() throws  Exception {
+        Student test = newGal();
+        Student second = another();
+        studentDao.add(test);
+        studentDao.add(second);
+        studentDao.graduated(second.getId());
+        assertEquals(Arrays.asList(test), studentDao.getAll() );
+    }
+
+
+//    @Test
+//    public void completion_returnsCorrectly() throws Exception {
+//        Student test = newGal();
+//        Student second = another();
+//        studentDao.add(new Student());
+//        studentDao.add(new Student());
+//        studentDao.add(test);
+//        studentDao.add(second);
+//        studentDao.add(new Student("male", 18, false));
+////        assertEquals(4, studentDao.completion());
+//    }
 
     //helpers
     public static Student newGal() {
-        return new Student("female", 28, false);
+        return new Student("female", 28, true);
     }
 
     public static Student another() {
-        return new Student("male", 26, false);
+        return new Student("male", 26, true);
     }
 }

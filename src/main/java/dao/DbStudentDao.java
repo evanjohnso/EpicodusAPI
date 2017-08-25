@@ -16,9 +16,10 @@ public class DbStudentDao implements StudentDao {
         this.path = path;
     }
 
+    @Override
     public void add(Student newStudent) {
-        String sql = "INSERT INTO students (gender, age, graduated) VALUES"
-                + "(:gender, :age, :graduated)";
+        String sql = "INSERT INTO students (gender, age, enrolled) VALUES"
+                + "(:gender, :age, :enrolled)";
         try (Connection con = path.open()) {
             int id = (int) con.createQuery(sql)
                     .bind(newStudent)
@@ -37,7 +38,7 @@ public class DbStudentDao implements StudentDao {
                     .executeAndFetch(Student.class);
         }
     }
-
+    @Override
     public Student findById(int id) {
         try(Connection con = path.open()) {
             return con.createQuery("SELECT * FROM students WHERE id = :id")
@@ -45,5 +46,40 @@ public class DbStudentDao implements StudentDao {
                     .executeAndFetchFirst(Student.class);
         }
     }
+
+    @Override
+    public void dropped(int id) {
+        try(Connection con = path.open()) {
+            con.createQuery("UPDATE students SET enrolled = (false) WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
+    }
+
+    @Override
+    public void graduated(int id) {
+        try(Connection con = path.open()) {
+            con.createQuery("DELETE FROM students WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
+    }
+
+//    @Override
+//    public int completion() {
+//        try(Connection con = path.open()) {
+//            Integer total = con.createQuery("SELECT * FROM students")
+//                    .executeAndFetch(Student.class)
+//                    .size();
+//
+//            Integer progress = con.createQuery("SELECT * FROM students WHERE enrolled = :status")
+//                    .addParameter("status", true)
+//                    .executeAndFetch(Student.class)
+//                    .size();
+//            float answer =   progress / total;
+//            double what = 1 / 2;
+//            return 1;
+//        }
+//    }
 
 }

@@ -15,6 +15,13 @@ public interface StudentDao {
     //Read
     List<Student> getAll();
     Student findById(int id);
+//    int completion();
+
+    //Update
+    void dropped(int id);
+
+    //Delete
+    void graduated(int id);
 
 
 }
