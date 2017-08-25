@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class DbGraduateDaoTest {
@@ -53,6 +55,9 @@ public class DbGraduateDaoTest {
         //student graduates and gets pulled from students table --> to graduate table
         Graduate testGal = new Graduate(student.getId(), "female", 28, "Junior Dev", 45000, true );
         graduateDao.add(testGal);
+        graduateDao.add(new Graduate());
+        graduateDao.add(new Graduate());
+        assertEquals(3, graduateDao.getAll().size());
         assertEquals(student2, studentDao.findById(student2.getId()));
     }
 

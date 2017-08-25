@@ -5,7 +5,7 @@ import dataModels.*;
 
 import java.util.List;
 
-public class DbGraduateDao {
+public class DbGraduateDao implements GraduateDao {
     private final Sql2o path;
 
     //Constructor
@@ -13,6 +13,7 @@ public class DbGraduateDao {
         this.path = path;
     }
 
+    @Override
     public void add(Graduate newGrad) {
         String sql = "INSERT INTO graduates (studentId, gender, age, graduated, jobTitle, salary, employed) VALUES"
                         + "(:studentId, :gender, :age, :graduated, :jobTitle, :salary, :employed)";
@@ -32,14 +33,14 @@ public class DbGraduateDao {
             System.out.println(ex);
         }
     }
-
+    @Override
     public List<Graduate> getAll() {
         try(Connection con = path.open()) {
             return con.createQuery("SELECT * FROM graduates")
                     .executeAndFetch(Graduate.class);
         }
     }
-
+    @Override
     public Graduate findById(int id) {
         try(Connection con = path.open()) {
             return con.createQuery("SELECT * FROM graduates WHERE id = :id")

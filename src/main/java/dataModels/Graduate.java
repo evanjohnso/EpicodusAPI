@@ -9,6 +9,9 @@ public class Graduate extends Student {
     private boolean employed;
 
     //Constructor
+    //overload to make testing easier
+    public Graduate() {
+    }
     public Graduate(int studentId, String gender, int age, String jobTitle, int salary, boolean employed) {
         super(gender, age, true);
         this.studentId = studentId;

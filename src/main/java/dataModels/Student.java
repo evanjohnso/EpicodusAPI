@@ -7,6 +7,9 @@ public class Student {
     private boolean graduated;
 
     //Constructor
+    public Student() {
+    }
+
     public Student(String gender, int age, boolean graduated) {
         this.gender = gender;
         this.age = age;

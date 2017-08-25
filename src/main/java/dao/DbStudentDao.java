@@ -9,7 +9,7 @@ import org.sql2o.Sql2oException;
 
 import java.util.List;
 
-public class DbStudentDao {
+public class DbStudentDao implements StudentDao {
     private final Sql2o path;
 
     public  DbStudentDao(Sql2o path) {
@@ -30,7 +30,7 @@ public class DbStudentDao {
         }
     }
 
-
+    @Override
     public List<Student> getAll() {
         try(Connection con = path.open()) {
             return con.createQuery("SELECT * FROM students")
