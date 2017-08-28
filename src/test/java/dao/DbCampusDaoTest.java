@@ -35,25 +35,34 @@ public class DbCampusDaoTest {
     public void add() throws Exception {
         Campus seattle = new Campus("Seattle");
         campusDao.add(seattle);
-        assertEquals(seattle, campusDao.findById(seattle.getId()));
+        assertEquals(seattle, campusDao.find(seattle.getId()));
     }
 
     @Test
-    public void findById() throws Exception {
+    public void find() throws Exception {
         Campus seattle = new Campus("Seattle");
         campusDao.add(seattle);
         campusDao.add(new Campus("Portland"));
-        assertEquals(seattle, campusDao.findById(seattle.getId()));
+        assertEquals(seattle, campusDao.find(seattle.getId()));
     }
 
     @Test
-    public void schoolClosed() throws Exception {
+    public void schoolClosedViaFindByIdFunction() throws Exception {
         Campus seattle = new Campus("Seattle");
         campusDao.add(seattle);
         campusDao.add(new Campus("Portland"));
         campusDao.schoolClosed(seattle);
-        assertEquals(null, campusDao.findById(seattle.getId()));
+        assertEquals(null, campusDao.find(seattle.getId()));
     }
+
+    @Test
+    public void findByLocationFunction() throws Exception {
+        Campus seattle = new Campus("Seattle");
+        campusDao.add(seattle);
+        campusDao.add(new Campus("Portland"));
+        assertEquals(seattle, campusDao.find(seattle.getLocation()));
+    }
+
 
     @Test
     public void closeSchoolMakesAllTracksAtThatSchoolDisappear() throws Exception {

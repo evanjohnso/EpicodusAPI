@@ -10,8 +10,10 @@ public interface CampusDao {
     void add(Campus school);
 
     //Read
-    Campus findById(int id);
+//    Campus findById(int id);
     List<Campus> getAll();
+    Campus find(int id);
+    Campus find(String location);
 
     //Delete
     void schoolClosed(Campus school);

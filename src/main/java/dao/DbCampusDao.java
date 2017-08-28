@@ -29,14 +29,30 @@ public class DbCampusDao implements CampusDao {
         }
     }
 
-    @Override
-    public Campus findById(int id) {
+//    @Override
+//    public Campus findById(int id) {
+//        try(Connection con = path.open()) {
+//            return con.createQuery("SELECT * FROM campuses WHERE id = :id")
+//                    .addParameter("id", id)
+//                    .executeAndFetchFirst(Campus.class);
+//        }
+//    }
+
+    public Campus find(int id) {
         try(Connection con = path.open()) {
             return con.createQuery("SELECT * FROM campuses WHERE id = :id")
                     .addParameter("id", id)
                     .executeAndFetchFirst(Campus.class);
         }
     }
+    public Campus find(String location) {
+        try(Connection con = path.open()) {
+            return con.createQuery("SELECT * FROM campuses WHERE location = :location")
+                    .addParameter("location", location)
+                    .executeAndFetchFirst(Campus.class);
+        }
+    }
+
     @Override
     public List<Campus> getAll() {
         try(Connection con = path.open()) {
@@ -57,6 +73,5 @@ public class DbCampusDao implements CampusDao {
                     .addParameter("location", school.getLocation())
                     .executeUpdate();
         }
-
     }
 }
