@@ -62,7 +62,7 @@ public class DbStudentDao implements StudentDao {
     public int averageAge() {
         try(Connection con = path.open()) {
             int average = 0;
-            List<Integer> ages = con.createQuery("SELECT age FROM students")
+            List<Integer> ages = con.createQuery("SELECT AVG age FROM students")
                     .executeAndFetch(Integer.class);
             for (Integer age: ages) {
                 average += age;
@@ -118,15 +118,11 @@ public class DbStudentDao implements StudentDao {
     @Override
     public double completion() {
         try(Connection con = path.open()) {
-            Double total = (double) con.createQuery("SELECT * FROM students")
-                    .executeAndFetch(Student.class)
-                    .size();
-
-            Double progress = (double) con.createQuery("SELECT * FROM students WHERE enrolled = :status")
-                    .addParameter("status", true)
-                    .executeAndFetch(Student.class)
-                    .size();
-            return (int) ((progress / total) * 100 );
+            double total = con.createQuery("SELECT COUNT(*) FROM students")
+                    .executeAndFetchFirst(Double.class);
+            double progress = con.createQuery("SELECT COUNT(*) FROM students WHERE enrolled = (true)")
+                    .executeAndFetchFirst(Double.class);
+            return  (progress / total) * 100;
         }
     }
 
