@@ -4,26 +4,21 @@
 
 ## Description
 
-_A custom built public API providing information about Epicodus student's which has campuses in both Portland and Seattle_
+A custom built public API providing information about Epicodus student's which has campuses in both Portland and Seattle.
+This project leverages H2 to quickly onboard a relational database for the MVP. Postman was vital to injecting
+new data into the server, however a text.json file is included to facilitate testing on a remote computer.
+
 
 ## Setup/Installation Requirements
 
 You will need Gradle installed on your device.
 
-* ```console git clone https://github.com/evanjohnso/EpicodusAPI.gi ```
+* ```git clone https://github.com/evanjohnso/EpicodusAPI.gi ```
 * Install Postgres
 * Open project in preferred IDE and launch app
 * Go to localhost:4567 in your preferred browser or use Postman to add information
 
 ## Specifications
-
-* A text.json file is included to facilitate the feeding of new JSON for testing
-
-***
-# The API should return all students by a given track
-* localhost:4567/Epicodus/:track/:trackId/students
-![Alt text](https://user-images.githubusercontent.com/28036416/29736159-b2964d2a-89b3-11e7-8ef9-b567a416929c.png)
-***
 
 # The API should return the average age for all current and former Epicodus students
 * localhost:4567/Epicodus/facts/age
