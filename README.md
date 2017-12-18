@@ -4,9 +4,9 @@
 
 ## Description
 
-A custom built public API providing information about Epicodus student's which has campuses in both Portland and Seattle.
-This project leverages H2 to quickly onboard a relational database for the MVP. Postman was vital to injecting
-new data into the server, however a text.json file is included to facilitate testing on a remote computer.
+A custom built public facing API providing information about student demographics for a local code school.
+This project leverages H2 to quickly onboard a relational database. Postman was vital to injecting
+new data into the server. If on a remote computer, a text.json file is included in the repo to facilitate testing.
 
 
 ## Setup/Installation Requirements
